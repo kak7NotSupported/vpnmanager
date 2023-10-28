@@ -15,10 +15,102 @@ object KeyboardFactory {
     fun getKeyboard(type: KeyboardType): ReplyKeyboard {
         return when (type) {
             KeyboardType.START -> getStartKeyboard()
-            KeyboardType.CONTACT_US -> getContactUsKeyboard()
+            KeyboardType.CONTACT_US -> getContactUsInlineKeyboard()
             KeyboardType.REFERRAL -> getReferralInlineKeyboard()
+            KeyboardType.MY_ACCOUNT -> getMyAccountInlineKeyboard()
             KeyboardType.EMPTY -> getEmptyKeyboard()
+            KeyboardType.PLATFORMS -> getPlatformsInlineKeyboard()
+            // todo about button
+            KeyboardType.ABOUT_US -> getReferralInlineKeyboard()
         }
+    }
+
+    private fun getContactUsInlineKeyboard(): InlineKeyboardMarkup{
+
+        val markup = InlineKeyboardMarkup()
+
+        val row1 = mutableListOf<InlineKeyboardButton>()
+
+        InlineKeyboardButton().let {
+            it.text = LocaleManager.getMessage("contact_us_button")
+            it.url = "https://t.me/Nick_s3ller"
+
+            it.callbackData = "referal button"
+            row1.add(it)
+        }
+
+        val row2 = mutableListOf<InlineKeyboardButton>()
+
+        InlineKeyboardButton().let {
+            it.text = LocaleManager.getMessage("cancel")
+            it.callbackData = "referal button"
+//            it.webApp.url = "/"
+            row2.add(it)
+        }
+
+        markup.keyboard = listOf(row1, row2)
+        return markup
+    }
+
+    private fun getPlatformsInlineKeyboard(): InlineKeyboardMarkup{
+
+        val markup = InlineKeyboardMarkup()
+
+        val row1 = mutableListOf<InlineKeyboardButton>()
+
+        InlineKeyboardButton().let {
+            it.text = LocaleManager.getMessage("android")
+
+            it.callbackData = "referal button"
+            row1.add(it)
+        }
+
+        InlineKeyboardButton().let {
+            it.text = LocaleManager.getMessage("apple")
+
+            it.callbackData = "referal button"
+            row1.add(it)
+        }
+
+        val row2 = mutableListOf<InlineKeyboardButton>()
+
+        InlineKeyboardButton().let {
+            it.text = LocaleManager.getMessage("windows")
+            it.callbackData = "referal button"
+            row2.add(it)
+        }
+
+        InlineKeyboardButton().let {
+            it.text = LocaleManager.getMessage("other")
+            it.callbackData = "referal button"
+            row2.add(it)
+        }
+
+        markup.keyboard = listOf(row1, row2)
+        return markup
+    }
+
+    private fun getMyAccountInlineKeyboard(): InlineKeyboardMarkup{
+
+        val markup = InlineKeyboardMarkup()
+        val row1 = mutableListOf<InlineKeyboardButton>()
+
+        InlineKeyboardButton().let {
+            it.text = LocaleManager.getMessage("refresh")
+            it.callbackData = "referal button"
+            row1.add(it)
+        }
+
+        val row2 = mutableListOf<InlineKeyboardButton>() 
+
+        InlineKeyboardButton().let {
+            it.text = LocaleManager.getMessage("cancel")
+            it.callbackData = "referal button"
+            row2.add(it)
+        }
+
+        markup.keyboard = listOf(row1, row2)
+        return markup
     }
 
     // В KeyboardFactory
@@ -39,10 +131,11 @@ object KeyboardFactory {
 
     private fun getStartKeyboard(): ReplyKeyboard {
         val keyboardMarkup = ReplyKeyboardMarkup()
+        keyboardMarkup.resizeKeyboard = true
         // Создаем строки клавиатуры
         val row1 = KeyboardRow()
-        row1.add(KeyboardButton(LocaleManager.getMessage("my_accounts_button")))
-        row1.add(KeyboardButton(LocaleManager.getMessage("add_account_button")))
+        row1.add(KeyboardButton(LocaleManager.getMessage("account_button")))
+        row1.add(KeyboardButton(LocaleManager.getMessage("platforms")))
 
         val row2 = KeyboardRow()
         row2.add(KeyboardButton(LocaleManager.getMessage("about_us_button")))
@@ -68,7 +161,10 @@ object KeyboardFactory {
         START,
         CONTACT_US,
         REFERRAL,
-        EMPTY
+        EMPTY,
+        MY_ACCOUNT,
+        PLATFORMS,
+        ABOUT_US
     }
 
 }

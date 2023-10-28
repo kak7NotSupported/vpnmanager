@@ -5,10 +5,10 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage
 
 object MessageBuilder {
 
-    fun buildMessage(chatId: String, textKey: String, keyboardType: KeyboardFactory.KeyboardType? = null): SendMessage {
+    fun buildMessage(chatId: String, textKey: String, keyboardType: KeyboardFactory.KeyboardType? = null, vararg args: String): SendMessage {
         return SendMessage().apply {
             this.chatId = chatId
-            this.text = LocaleManager.getMessage(textKey)
+            this.text = LocaleManager.getMessage(textKey, *args)
             this.replyMarkup = keyboardType?.let { KeyboardFactory.getKeyboard(it) }
 
         }
