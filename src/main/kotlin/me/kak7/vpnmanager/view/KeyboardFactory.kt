@@ -25,7 +25,7 @@ object KeyboardFactory {
         }
     }
 
-    private fun getContactUsInlineKeyboard(): InlineKeyboardMarkup{
+    private fun getContactUsInlineKeyboard(): InlineKeyboardMarkup {
 
         val markup = InlineKeyboardMarkup()
 
@@ -52,7 +52,7 @@ object KeyboardFactory {
         return markup
     }
 
-    private fun getPlatformsInlineKeyboard(): InlineKeyboardMarkup{
+    private fun getPlatformsInlineKeyboard(): InlineKeyboardMarkup {
 
         val markup = InlineKeyboardMarkup()
 
@@ -90,7 +90,7 @@ object KeyboardFactory {
         return markup
     }
 
-    private fun getMyAccountInlineKeyboard(): InlineKeyboardMarkup{
+    private fun getMyAccountInlineKeyboard(): InlineKeyboardMarkup {
 
         val markup = InlineKeyboardMarkup()
         val row1 = mutableListOf<InlineKeyboardButton>()
@@ -101,7 +101,7 @@ object KeyboardFactory {
             row1.add(it)
         }
 
-        val row2 = mutableListOf<InlineKeyboardButton>() 
+        val row2 = mutableListOf<InlineKeyboardButton>()
 
         InlineKeyboardButton().let {
             it.text = LocaleManager.getMessage("cancel")

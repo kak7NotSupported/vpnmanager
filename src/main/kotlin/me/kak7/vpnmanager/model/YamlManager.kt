@@ -3,9 +3,6 @@ package me.kak7.vpnmanager.model
 import org.spongepowered.configurate.ConfigurationNode
 import org.spongepowered.configurate.yaml.NodeStyle
 import org.spongepowered.configurate.yaml.YamlConfigurationLoader
-import org.yaml.snakeyaml.Yaml
-import java.io.File
-import java.io.FileInputStream
 
 abstract class YamlManager(private val filePath: String) {
 
