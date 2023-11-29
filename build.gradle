@@ -1,6 +1,7 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.9.0'
     id 'application'
+//    id "org.hibernate.orm" version "6.4.0.Final"
 }
 
 group = 'me.kak7'
@@ -8,13 +9,20 @@ version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    maven {
+        url "https://repo1.maven.org/maven2"
+    }
 }
+
 
 dependencies {
     implementation 'org.telegram:telegrambots:6.8.0'
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
     implementation 'org.yaml:snakeyaml:2.2'
     implementation("org.spongepowered:configurate-yaml:4.1.1")
+    runtimeOnly 'org.postgresql:postgresql:42.7.0'
+//    implementation("org.hibernate.common:hibernate-commons-annotations:6.0.6.Final")
+    implementation("org.hibernate.orm:hibernate-core:6.4.0.Final")
 }
 
 test {
