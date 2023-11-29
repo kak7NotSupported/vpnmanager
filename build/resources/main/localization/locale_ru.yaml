@@ -20,3 +20,4 @@ messages:
   Получить права админа: /getadmin {code}\n
   Перезагрузить Locale: /localereload
   "
+  cancelled: "Отменено"

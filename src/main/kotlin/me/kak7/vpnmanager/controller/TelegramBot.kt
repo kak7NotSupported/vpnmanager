@@ -5,7 +5,9 @@ import me.kak7.vpnmanager.model.localization.LocaleManager
 import me.kak7.vpnmanager.view.KeyboardFactory
 import me.kak7.vpnmanager.view.MessageBuilder
 import org.telegram.telegrambots.bots.TelegramLongPollingBot
+import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageText
 import org.telegram.telegrambots.meta.api.objects.Update
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup
 
 class TelegramBot : TelegramLongPollingBot() {
     override fun getBotUsername() = "main"
@@ -77,5 +79,23 @@ class TelegramBot : TelegramLongPollingBot() {
                 e.printStackTrace()
             }
         }
+
+        update?.takeIf { it.hasCallbackQuery() }?.let {
+            val callbackData = update.callbackQuery.data
+            if (callbackData == "cancel") {
+                println(callbackData)
+                val editMessage = EditMessageText()
+                editMessage.chatId = update.callbackQuery.message.chatId.toString()
+                editMessage.messageId = update.callbackQuery.message.messageId
+                editMessage.text = "Отменено"
+
+                execute(editMessage)
+                try {
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }
+
     }
 }

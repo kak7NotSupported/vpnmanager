@@ -7,7 +7,6 @@ import org.spongepowered.configurate.yaml.YamlConfigurationLoader
 abstract class YamlManager(private val filePath: String) {
 
     lateinit var rootNode: ConfigurationNode
-
     init {
         loadData()
     }
