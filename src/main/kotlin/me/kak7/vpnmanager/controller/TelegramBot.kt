@@ -63,7 +63,8 @@ class TelegramBot : TelegramLongPollingBot() {
                     KeyboardFactory.KeyboardType.ABOUT_US
                 )
                 // todo reset password
-                LocaleManager.getMessage("account_button") -> MessageBuilder.buildMessage(chatId, "account_text")
+                LocaleManager.getMessage("account_button") -> MessageBuilder.buildMessage(chatId, "account_text", keyboardType = KeyboardFactory.KeyboardType.MY_ACCOUNT)
+
                 else -> MessageBuilder.buildMessage(chatId, "unknown_command", KeyboardFactory.KeyboardType.START)
             }
 

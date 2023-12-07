@@ -69,9 +69,10 @@ object KeyboardFactory {
     }
 
     private fun getMyAccountInlineKeyboard(): InlineKeyboardMarkup {
+        // todo реализовать кнопки аккаунта через hybernate
         return InlineKeyboardMarkup().apply {
             keyboard = listOf(
-                listOf(createInlineKeyboardButton(LocaleManager.getMessage("refresh"), "refresh")),
+                listOf(createInlineKeyboardButton(LocaleManager.getMessage("refresh"), "refresh"), createInlineKeyboardButton(LocaleManager.getMessage("refresh"), "refresh")),
                 listOf(createInlineKeyboardButton(LocaleManager.getMessage("cancel"), "cancel"))
             )
         }
